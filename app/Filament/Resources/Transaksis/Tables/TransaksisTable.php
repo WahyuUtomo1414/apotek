@@ -19,25 +19,27 @@ class TransaksisTable
     {
         return $table
             ->columns([
-                TextColumn::make('id_pasien')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('total_harga')
-                    ->numeric()
-                    ->sortable(),
+                TextColumn::make('pasien.nama')
+                    ->label('Nama Pasien')
+                    ->searchable(),
+                TextColumn::make('keterangan')
+                    ->label('Keterangan')
+                    ->searchable(),
                 TextColumn::make('metode_pembayaran')
                     ->searchable(),
+                TextColumn::make('total_harga')
+                    ->numeric()
+                    ->sortable()
+                    ->prefix('Rp. '),
                 IconColumn::make('active')
+                    ->label('Status Pembayaran')
                     ->boolean(),
-                TextColumn::make('created_by')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('updated_by')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('deleted_by')
-                    ->numeric()
-                    ->sortable(),
+                TextColumn::make('createdBy.name')
+                    ->label('Created By'),
+                TextColumn::make('updatedBy.name')
+                    ->label("Updated by"),
+                TextColumn::make('deletedBy.name')
+                    ->label("Deleted by"),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
