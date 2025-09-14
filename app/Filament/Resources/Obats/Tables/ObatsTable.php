@@ -22,30 +22,34 @@ class ObatsTable
             ->columns([
                 TextColumn::make('nama')
                     ->searchable(),
-                ImageColumn::make('image'),
+                ImageColumn::make('image')
+                    ->disk('public')
+                    ->imageSize(70),
+                TextColumn::make('deskripsi')
+                    ->searchable()
+                    ->limit(80),
                 TextColumn::make('stok')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('expired_at')
-                    ->date()
+                    ->date('d F Y')
                     ->sortable(),
                 TextColumn::make('harga_reseller')
                     ->numeric()
+                    ->prefix('Rp. ')
                     ->sortable(),
                 TextColumn::make('harga_eceran')
                     ->numeric()
+                    ->prefix('Rp. ')
                     ->sortable(),
                 IconColumn::make('active')
                     ->boolean(),
-                TextColumn::make('created_by')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('updated_by')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('deleted_by')
-                    ->numeric()
-                    ->sortable(),
+                TextColumn::make('createdBy.name')
+                    ->label('Created By'),
+                TextColumn::make('updatedBy.name')
+                    ->label("Updated by"),
+                TextColumn::make('deletedBy.name')
+                    ->label("Deleted by"),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
