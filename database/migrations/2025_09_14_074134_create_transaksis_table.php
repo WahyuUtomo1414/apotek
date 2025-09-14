@@ -20,7 +20,7 @@ return new class extends Migration
             $table->double('total_harga')->default(0);
             $table->string('metode_pembayaran', 32);
             $table->text('keterangan')->nullable();
-            $table->timestamps();
+            $this->base($table);
         });
     }
 
