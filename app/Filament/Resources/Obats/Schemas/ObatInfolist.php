@@ -3,10 +3,12 @@
 namespace App\Filament\Resources\Obats\Schemas;
 
 use App\Models\Obat;
-use Filament\Infolists\Components\IconEntry;
-use Filament\Infolists\Components\ImageEntry;
-use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Section;
+use Filament\Infolists\Components\IconEntry;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\ImageEntry;
 
 class ObatInfolist
 {
@@ -16,38 +18,47 @@ class ObatInfolist
             ->components([
                 TextEntry::make('nama'),
                 ImageEntry::make('image')
-                    ->placeholder('-'),
+                    ->placeholder('-')
+                    ->disk('public'),
                 TextEntry::make('deskripsi')
                     ->placeholder('-')
                     ->columnSpanFull(),
                 TextEntry::make('stok')
                     ->numeric(),
                 TextEntry::make('expired_at')
-                    ->date()
+                    ->date('d F Y')
                     ->placeholder('-'),
                 TextEntry::make('harga_reseller')
-                    ->numeric(),
+                    ->numeric()
+                    ->prefix('Rp. '),
                 TextEntry::make('harga_eceran')
-                    ->numeric(),
+                    ->numeric()
+                    ->prefix('Rp. '),
                 IconEntry::make('active')
                     ->boolean(),
-                TextEntry::make('created_by')
-                    ->numeric(),
-                TextEntry::make('updated_by')
-                    ->numeric()
-                    ->placeholder('-'),
-                TextEntry::make('deleted_by')
-                    ->numeric()
-                    ->placeholder('-'),
-                TextEntry::make('created_at')
-                    ->dateTime()
-                    ->placeholder('-'),
-                TextEntry::make('updated_at')
-                    ->dateTime()
-                    ->placeholder('-'),
-                TextEntry::make('deleted_at')
-                    ->dateTime()
-                    ->visible(fn (Obat $record): bool => $record->trashed()),
+                
+                Section::make('Informasi Pengguna')
+                ->schema([
+                    TextEntry::make('createdBy.name')
+                        ->label('Created By'),
+                    TextEntry::make('updatedBy.name')
+                        ->label("Updated by"),
+                    TextEntry::make('deletedBy.name')
+                        ->label("Deleted by"),
+                ])->columns(3)->columnSpanFull()->collapsible(),
+
+                Section::make('Timestamps')
+                    ->schema([
+                        Grid::make(2)
+                            ->schema([
+                                TextEntry::make('created_at')
+                                    ->label('Created At')
+                                    ->dateTime('d/m/Y H:i'),
+                                TextEntry::make('updated_at')
+                                    ->label('Last Updated')
+                                    ->dateTime('d/m/Y H:i'),
+                            ]),
+                    ])->columnSpanFull()->collapsible(),
             ]);
     }
 }
