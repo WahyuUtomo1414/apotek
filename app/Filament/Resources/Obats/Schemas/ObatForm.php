@@ -44,6 +44,7 @@ class ObatForm
                     ->stripCharacters(',')
                     ->prefix("Rp"),
                 Toggle::make('active')
+                    ->label('Status')
                     ->required(),
             ]);
     }

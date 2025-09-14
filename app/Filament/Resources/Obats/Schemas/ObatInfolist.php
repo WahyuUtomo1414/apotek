@@ -36,6 +36,7 @@ class ObatInfolist
                     ->numeric()
                     ->prefix('Rp. '),
                 IconEntry::make('active')
+                    ->label('Status')
                     ->boolean(),
                 
                 Section::make('Informasi Pengguna')

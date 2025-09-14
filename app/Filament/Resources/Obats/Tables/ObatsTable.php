@@ -43,6 +43,7 @@ class ObatsTable
                     ->prefix('Rp. ')
                     ->sortable(),
                 IconColumn::make('active')
+                    ->label('Status')
                     ->boolean(),
                 TextColumn::make('createdBy.name')
                     ->label('Created By'),
