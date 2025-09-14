@@ -11,6 +11,7 @@ use App\Filament\Resources\Obats\Schemas\ObatInfolist;
 use App\Filament\Resources\Obats\Tables\ObatsTable;
 use App\Models\Obat;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -22,7 +23,9 @@ class ObatResource extends Resource
 {
     protected static ?string $model = Obat::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::Beaker;
+
+    protected static string | UnitEnum | null $navigationGroup = 'Data Apotek';
 
     protected static ?string $recordTitleAttribute = 'Obat';
 
