@@ -18,7 +18,7 @@
         </div>
         <h2>Invoice Transaksi #{{ $transaksi->id }}</h2>
         <p>Pasien: {{ $transaksi->pasien->nama ?? '-' }}</p>
-        <p>Tanggal: {{ $transaksi->created_at->format('d F Y H:i') }}</p>
+        <p>Tanggal: {{ $transaksi->created_at->format('d F Y') }}</p>
         <p>Keterangan: {{ $transaksi->keterangan }}</p>
 
         <table>
