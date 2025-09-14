@@ -55,6 +55,14 @@ class TransaksiForm
                                                 $set('harga_satuan', $obat->harga_reseller);
                                             }
                                         }
+
+                                        // hitung ulang subtotal
+                                        $set('subtotal', ($get('jumlah_beli') ?? 0) * ($get('harga_satuan') ?? 0));
+
+                                        // update total harga semua repeater
+                                        $allDetails = $get('../../details') ?? [];
+                                        $total = collect($allDetails)->sum(fn ($d) => (int) ($d['subtotal'] ?? 0));
+                                        $set('../../total_harga', $total);
                                     }),
 
                                 TextInput::make('jumlah_beli')
