@@ -19,7 +19,7 @@ class ObatInfolist
                 TextEntry::make('nama'),
                 ImageEntry::make('image')
                     ->placeholder('-')
-                    ->default('images/obat.png')
+                    ->default(asset('images/obat.png'))
                     ->disk('public'),
                 TextEntry::make('deskripsi')
                     ->placeholder('-')

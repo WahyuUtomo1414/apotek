@@ -24,6 +24,7 @@ class ObatsTable
                     ->searchable(),
                 ImageColumn::make('image')
                     ->disk('public')
+                    ->default(asset('images/obat.png'))
                     ->imageSize(70),
                 TextColumn::make('deskripsi')
                     ->searchable()
