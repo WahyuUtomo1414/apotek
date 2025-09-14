@@ -17,12 +17,15 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use UnitEnum;
 
 class TransaksiResource extends Resource
 {
     protected static ?string $model = Transaksi::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::ShoppingCart;
+
+    protected static string | UnitEnum | null $navigationGroup = 'Data Transaksi';
 
     protected static ?string $recordTitleAttribute = 'Transaksi';
 
