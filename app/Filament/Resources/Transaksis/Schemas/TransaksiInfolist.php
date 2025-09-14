@@ -21,6 +21,7 @@ class TransaksiInfolist
                     ->label('Nama Pasien'),
                 TextEntry::make('total_harga')
                     ->label('Total Harga')
+                    ->numeric()
                     ->prefix('Rp. '),
                 TextEntry::make('keterangan')
                     ->label('Keterangan')
@@ -47,9 +48,11 @@ class TransaksiInfolist
                                     ->label('Jumlah'),
                                 TextEntry::make('harga_satuan')
                                     ->label('Harga Satuan')
+                                    ->numeric()
                                     ->prefix('Rp. '),
                                 TextEntry::make('subtotal')
                                     ->label('Subtotal')
+                                    ->numeric()
                                     ->prefix('Rp. '),
                             ])
                             ->columns(5),
