@@ -13,4 +13,9 @@ class Obat extends Model
     use HasFactory, Notifiable, AuditedBySoftDelete, SoftDeletes;
     protected $table = 'obat';
     protected $guarded = ['id'];
+
+    public function detailTransaksi()
+    {
+        return $this->hasMany(DetailTransaksi::class, 'id_obat', 'id_obat');
+    }
 }
