@@ -22,20 +22,26 @@ class PasiensTable
                     ->searchable(),
                 TextColumn::make('umur')
                     ->numeric()
+                    ->suffix(' Tahun')
                     ->sortable(),
                 TextColumn::make('jenis_kelamin')
                     ->badge(),
+                TextColumn::make('alamat')
+                    ->searchable(),
+                TextColumn::make('diagnosa')
+                    ->searchable(),
                 IconColumn::make('active')
-                    ->boolean(),
-                TextColumn::make('created_by')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('updated_by')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('deleted_by')
-                    ->numeric()
-                    ->sortable(),
+                    ->boolean()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('createdBy.name')
+                    ->label('Created By')
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('updatedBy.name')
+                    ->label("Updated by")
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('deletedBy.name')
+                    ->label("Deleted by")
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
