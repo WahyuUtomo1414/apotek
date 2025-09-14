@@ -15,12 +15,14 @@ class PasienForm
         return $schema
             ->components([
                 TextInput::make('nama')
-                    ->required(),
+                    ->required()
+                    ->columnSpanFull(),
                 Textarea::make('alamat')
                     ->columnSpanFull(),
                 TextInput::make('umur')
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->suffix('Tahun'),
                 Select::make('jenis_kelamin')
                     ->options(['Laki-laki' => 'Laki laki', 'Perempuan' => 'Perempuan'])
                     ->required(),
@@ -28,14 +30,6 @@ class PasienForm
                     ->columnSpanFull(),
                 Toggle::make('active')
                     ->required(),
-                TextInput::make('created_by')
-                    ->required()
-                    ->numeric()
-                    ->default(1),
-                TextInput::make('updated_by')
-                    ->numeric(),
-                TextInput::make('deleted_by')
-                    ->numeric(),
             ]);
     }
 }
