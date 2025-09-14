@@ -16,6 +16,6 @@ class Obat extends Model
 
     public function detailTransaksi()
     {
-        return $this->hasMany(DetailTransaksi::class, 'id_obat', 'id_obat');
+        return $this->hasMany(DetailTransaksi::class, 'id_obat');
     }
 }
