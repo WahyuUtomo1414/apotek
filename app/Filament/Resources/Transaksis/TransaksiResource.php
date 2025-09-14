@@ -65,4 +65,29 @@ class TransaksiResource extends Resource
                 SoftDeletingScope::class,
             ]);
     }
+
+    public static function mutateFormDataBeforeCreate(array $data): array
+    {
+        return static::hitungTotal($data);
+    }
+
+    public static function mutateFormDataBeforeSave(array $data): array
+    {
+        return static::hitungTotal($data);
+    }
+
+    protected static function hitungTotal(array $data): array
+    {
+        $details = $data['details'] ?? [];
+
+        $total = collect($details)->sum(function ($d) {
+            $harga = (int) ($d['harga_satuan'] ?? 0);
+            $jumlah = (int) ($d['jumlah_beli'] ?? 0);
+            return $jumlah * $harga;
+        });
+
+        $data['total_harga'] = $total;
+
+        return $data;
+    }
 }
