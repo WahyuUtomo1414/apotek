@@ -26,6 +26,8 @@ class ObatInfolist
                     ->columnSpanFull(),
                 TextEntry::make('stok')
                     ->numeric(),
+                TextEntry::make('satuan.name')
+                    ->label('satuan'),
                 TextEntry::make('expired_at')
                     ->date('d F Y')
                     ->placeholder('-'),
