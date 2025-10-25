@@ -45,6 +45,10 @@ class ObatsTable
                     ->numeric()
                     ->prefix('Rp. ')
                     ->sortable(),
+                TextColumn::make('harga_modal')
+                    ->numeric()
+                    ->prefix('Rp. ')
+                    ->sortable(),
                 IconColumn::make('active')
                     ->label('Status')
                     ->boolean(),
