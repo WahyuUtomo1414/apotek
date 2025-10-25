@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources\Obats\Schemas;
 
+use App\Models\Satuan;
 use Filament\Support\RawJs;
 use Filament\Schemas\Schema;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -30,6 +32,10 @@ class ObatForm
                     ->required()
                     ->numeric()
                     ->default(0),
+                Select::make('id_satuan')
+                    ->required()
+                    ->label('Satuan')
+                    ->options(Satuan::where('active', true)->pluck('name', 'id')),
                 DatePicker::make('expired_at'),
                 TextInput::make('harga_reseller')
                     ->required()
