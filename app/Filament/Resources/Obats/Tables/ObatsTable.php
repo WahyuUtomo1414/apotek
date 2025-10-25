@@ -32,6 +32,8 @@ class ObatsTable
                 TextColumn::make('stok')
                     ->numeric()
                     ->sortable(),
+                TextColumn::make('satuan.name')
+                    ->searchable(),
                 TextColumn::make('expired_at')
                     ->date('d F Y')
                     ->sortable(),
