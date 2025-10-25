@@ -30,6 +30,8 @@ class PasiensTable
                     ->searchable(),
                 TextColumn::make('diagnosa')
                     ->searchable(),
+                TextColumn::make('terapi_obat')
+                    ->searchable(),
                 IconColumn::make('active')
                     ->boolean()
                     ->toggleable(isToggledHiddenByDefault: true),

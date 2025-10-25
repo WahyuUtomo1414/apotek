@@ -28,6 +28,8 @@ class PasienForm
                     ->required(),
                 Textarea::make('diagnosa')
                     ->columnSpanFull(),
+                Textarea::make('terapi_obat')
+                    ->columnSpanFull(),
                 Toggle::make('active')
                     ->required(),
             ]);
