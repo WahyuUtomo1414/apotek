@@ -20,6 +20,8 @@
         <p>Pasien: {{ $transaksi->pasien->nama ?? '-' }}</p>
         <p>Tanggal: {{ $transaksi->created_at->format('d F Y') }}</p>
         <p>Keterangan: {{ $transaksi->keterangan }}</p>
+        <br>
+        <p>Terapi Obat</p>
 
         <table>
             <thead>
