@@ -9,3 +9,6 @@ Route::get('/', function () {
 
 Route::get('/transaksis/{transaksi}/print', [TransaksiController::class, 'print'])
     ->name('transaksi.print');
+
+Route::get('/transaksi/print-all', [TransaksiController::class, 'printAll'])
+    ->name('transaksi.printAll');
