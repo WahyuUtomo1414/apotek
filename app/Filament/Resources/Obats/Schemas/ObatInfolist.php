@@ -37,6 +37,9 @@ class ObatInfolist
                 TextEntry::make('harga_eceran')
                     ->numeric()
                     ->prefix('Rp. '),
+                TextEntry::make('harga_modal')
+                    ->numeric()
+                    ->prefix('Rp. '),
                 IconEntry::make('active')
                     ->label('Status')
                     ->boolean(),
