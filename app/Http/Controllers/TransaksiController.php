@@ -18,4 +18,18 @@ class TransaksiController extends Controller
 
         return $pdf->stream("transaksi-{$transaksi->id}.pdf");
     }
+
+    public function printAll()
+    {
+        $transaksis = Transaksi::with(['pasien', 'detailTransaksi.obat'])->get();
+
+        $totalAmount = $transaksis->sum('total_harga');
+
+        $pdf = Pdf::loadView('pdf.transaksi_all', [
+            'transaksis' => $transaksis,
+            'totalAmount' => $totalAmount,
+        ])->setPaper('a4', 'portrait');
+
+        return $pdf->stream('laporan-semua-transaksi.pdf');
+    }
 }
