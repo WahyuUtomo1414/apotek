@@ -20,14 +20,6 @@ class SatuanForm
                     ->columnSpanFull(),
                 Toggle::make('active')
                     ->required(),
-                TextInput::make('created_by')
-                    ->required()
-                    ->numeric()
-                    ->default(1),
-                TextInput::make('updated_by')
-                    ->numeric(),
-                TextInput::make('deleted_by')
-                    ->numeric(),
             ]);
     }
 }
