@@ -16,9 +16,9 @@ class ListTransaksis extends ListRecords
         return [
             CreateAction::make(),
             Action::make('print_all')
-                ->label('Print Semua Transaksi')
+                ->label('Print Transaksi')
                 ->icon('heroicon-o-printer')
-                ->color('success')
+                ->color('info')
                 ->url(route('transaksi.printAll'))
                 ->openUrlInNewTab(),
         ];
