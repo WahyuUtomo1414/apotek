@@ -49,6 +49,12 @@ class ObatForm
                     ->mask(RawJs::make('$money($input)'))
                     ->stripCharacters(',')
                     ->prefix("Rp"),
+                TextInput::make('harga_modal')
+                    ->required()
+                    ->default(0)
+                    ->mask(RawJs::make('$money($input)'))
+                    ->stripCharacters(',')
+                    ->prefix("Rp"),
                 Toggle::make('active')
                     ->label('Status')
                     ->required(),
