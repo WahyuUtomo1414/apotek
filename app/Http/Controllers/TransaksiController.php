@@ -23,27 +23,31 @@ class TransaksiController extends Controller
     {
         $transaksis = Transaksi::with(['pasien', 'detailTransaksi.obat'])->get();
 
-        // Siapkan data untuk tabel ringkas
-        $data = $transaksis->map(function ($transaksi) {
-            return [
+        $rows = collect();
+
+        foreach ($transaksis as $transaksi) {
+        foreach ($transaksi->detailTransaksi as $detail) {
+            $rows->push([
                 'nama' => $transaksi->pasien->nama ?? '-',
                 'tanggal' => $transaksi->created_at->format('d F Y'),
                 'keterangan' => $transaksi->keterangan ?? '-',
-                'obat' => $transaksi->detailTransaksi->pluck('obat.nama')->implode(', '),
-                'jumlah' => $transaksi->detailTransaksi->sum('jumlah_beli'),
+                'obat' => $detail->obat->nama ?? '-',
+                'jumlah' => $detail->jumlah_beli,
                 'metode' => $transaksi->metode_pembayaran ?? '-',
                 'status' => $transaksi->active ? 'Lunas' : 'Belum Lunas',
                 'total_harga' => $transaksi->total_harga,
-            ];
-        });
+            ]);
+        }
+        }
 
-        $totalAmount = $data->sum('total_harga');
+        $totalAmount = $transaksis->sum('total_harga');
 
         $pdf = Pdf::loadView('pdf.transaksi_all', [
-            'data' => $data,
-            'totalAmount' => $totalAmount,
+        'rows' => $rows,
+        'totalAmount' => $totalAmount,
         ])->setPaper('a4', 'landscape');
 
-        return $pdf->stream('laporan-transaksi.pdf');
+        return $pdf->stream('laporan-transaksi-detail.pdf');
     }
+
 }
