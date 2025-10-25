@@ -18,4 +18,9 @@ class Obat extends Model
     {
         return $this->hasMany(DetailTransaksi::class, 'id_obat');
     }
+
+    public function satuan()
+    {
+        return $this->belongsTo(Satuan::class, 'id_satuan');
+    }
 }
